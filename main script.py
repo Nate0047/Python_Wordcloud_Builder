@@ -5,14 +5,16 @@ Becca Wordcloud:
 Script to take WhatsApp chats for 3 years and build visual
 """
 
+# %%
 # import packages
 import numpy as np
 import pandas as pd
 import re
-#from PIL import Image
-#import matplotlib.pyplot as plt
+from PIL import Image
+import matplotlib.pyplot as plt
 from wordcloud import WordCloud, STOPWORDS, ImageColorGenerator
 
+# %%
 # code taken from https://www.imrankhan.dev/pages/Exploring%20WhatsApp%20chats%20with%20Python.html
 
 # takes WhatsApp .txt file and parses into tabular format
@@ -135,8 +137,11 @@ stopwords.update(["Media", "omitted", "https"])
 
 # build wordcloud:
 wordcloud = WordCloud(stopwords = stopwords, max_font_size = 50, 
-    max_words = 100, background_color = "white", mask = transformed_heart_mask).generate(text)
+    max_words = 100, background_color = "white").generate(text)
 
+    # mask = transformed_heart_mask - use this coe to add mask
+
+# %%
 plt.figure()
 
 plt.imshow(wordcloud, interpolation="bilinear")
