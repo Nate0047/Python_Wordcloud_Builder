@@ -99,49 +99,14 @@ stopwords = set(STOPWORDS)
 
 stopwords.update(["Media", "omitted", "https"])
 
-# # import mask
-
-# heart_mask = np.array(Image.open('mask/heart.jpg'))
-
-# heart_mask
-
+# import mask
+heart_mask = np.array(Image.open('Mask/heart_mask.jpg'))
  
-
-# # transformer
-
-# def transform_format(val):
-
-#     if val == 0:
-
-#         return 255
-
-#     else:
-
-#         return val
-
- 
-
-# # transform heart mask
-
-# transformed_heart_mask = np.ndarray((heart_mask.shape[0],
-
-#                                     heart_mask.shape[1]), np.int32)
-
- 
-
-# for i in range(len(heart_mask)):
-
-#     transformed_heart_mask[i] = list(map(transform_format, heart_mask[i]))
-
- 
-
 # build wordcloud:
-wordcloud = WordCloud(stopwords = stopwords, max_font_size = 50, 
-    max_words = 100, background_color = "white").generate(text)
+wordcloud = WordCloud(stopwords = stopwords, max_font_size = 100, 
+    max_words = 150, background_color = "white", mask = heart_mask).generate(text)
 
-    # mask = transformed_heart_mask - use this coe to add mask
-
-# %%
+# plot wordcloud
 plt.figure()
 
 plt.imshow(wordcloud, interpolation="bilinear")
@@ -149,3 +114,10 @@ plt.imshow(wordcloud, interpolation="bilinear")
 plt.axis("off")
 
 plt.show()
+
+# use below code to define custom colour palette
+# def grey_color_func(word, font_size, position, orientation, random_state=None, **kwargs):
+#     return "hsl(0, 0%%, %d%%)" % random.randint(60, 100)
+
+# use below code to change colour palette of wordcloud
+# plt.imshow(wc.recolor(color_func=grey_color_func, random_state=3), interpolation="bilinear")
