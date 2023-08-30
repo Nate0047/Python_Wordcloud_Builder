@@ -18,6 +18,8 @@ from wordcloud import WordCloud, STOPWORDS, ImageColorGenerator
 
 # takes WhatsApp .txt file and parses into tabular format
 
+filename = 'Data/WhatsApp Chat with Adam.txt'
+
 def parse_file(text_file):
     
     '''Convert WhatsApp chat log text file to a Pandas dataframe.'''
@@ -58,7 +60,7 @@ def parse_file(text_file):
 
     return df
 
-df = parse_file('Data/WhatsApp Chat with Adam.txt')
+df = parse_file(filename)
 
 print(df)
 
@@ -83,9 +85,6 @@ wordcloud = WordCloud(stopwords = stopwords,
 
 # plot wordcloud
 plt.figure()
-
 plt.imshow(wordcloud, interpolation="bilinear")
-
 plt.axis("off")
-
 plt.show()
