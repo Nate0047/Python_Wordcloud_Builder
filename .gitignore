@@ -1,0 +1,4 @@
+# gitignore file
+
+# ignore folder to raw Data
+*/Data/
