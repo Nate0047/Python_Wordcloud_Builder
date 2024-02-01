@@ -18,7 +18,7 @@ from wordcloud import WordCloud, STOPWORDS, ImageColorGenerator
 
 # takes WhatsApp .txt file and parses into tabular format
 
-filename = 'Data/WhatsApp Chat with Adam.txt'
+filename = 'Data/WhatsApp Chat with friend or partner.txt'
 
 def parse_file(text_file):
     
